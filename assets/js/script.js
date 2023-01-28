@@ -27,6 +27,14 @@ searchBtnEl.on("click", function (event) {
     console.log("Latitude: " + lon);
   })
 
-  // SECOND AJAX CALL USES LONGITUDE AND LATITIUDE 
+  // SECOND AJAX CALL USES LONGITUDE AND LATITUDE DEFINED IN PREV AJAX CALL
+  var forecastURL = "api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&cnt=5&appid=11a6edf7f55109a8876a082e0f89437e"
 
+  $.ajax({
+    url: forecastURL,
+    method: "GET",
+  }).then(function (responseForecast) {
+
+    console.log(responseForecast);
+  })
 });
