@@ -1,5 +1,7 @@
-var searchCity = $("#search-input").val();
+var searchCity = $(".form-input").val();
 var searchBtnEl = $("#search-button")
+
+console.log(searchCity);
 
 searchBtnEl.on("click", function(event){
     event.preventDefault();
