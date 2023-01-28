@@ -16,33 +16,60 @@
     <h1>Weather Dashboard</h1>
   </header>
 
-  <div class="container containerEdit">
+  <!-- max-width for ultra wide resolutions -->
+  <div>
     <div class="row">
-      <!-- SEARCH AREA -->
-      <aside class="col-3">
-        <div>
-          <h2 id="form-heading" class="mt-1 h3 form-label">Search for a City:</h2>
-          <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter city name"
-            aria-labelledby="form-heading" aria-controls="today forecast" />
-        </div>
-        <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
-          Search
-        </button>
-        <button type="submit" class="btn clear-button" id="search-button" aria-label="submit search">
-          clear
-        </button>
-      </aside>
+      <div class="cityInfo col-3">
+        <h2 id="form-heading" class="mt-1 h3 form-label">
+          Search for a City:
+        </h2>
+        <form id="search-form" class="form">
+          <div class="form-inline form-group">
+            <div class="input-group">
+              <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter city name"
+                aria-labelledby="form-heading" aria-controls="today forecast" />
+              <div class="input-group-append">
+                <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
+                  Search
+                  <button type="submit" class="btn search-button" id="clear-button" aria-label="submit search">
+                    Clear
+                  </button>
+                  <hr class="hr weather-hr" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
-      <!-- JUMBOTRON -->
-      <div class="col-9 black">
+      <div class="col-9" style="width: 100vw">
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <h1 class="display-4">CITY AND DATE</h1>
+            <p class="lead">TEMP:</p>
+            <p class="lead">WIND:</p>
+            <p class="lead">HUMIDITY:</p>
           </div>
         </div>
+
+        <div class="row">
+          <div class="card" style="width: 18rem;">
+            <h5 class="card-title">Card title</h5>
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Cras justo odio</li>
+              <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
+
     </div>
+    <div class="list-group" id="history"></div>
+
   </div>
 
 
