@@ -7,7 +7,7 @@ $(currentDayEl).text("London" + today.format(" (MM/DD/YYYY)"));
 searchBtnEl.on("click", function (event) {
   event.preventDefault();
   // GRABS THE CITY USER TYPES IN
-  searchCity = document.querySelector("#search-input").value;
+  searchCity = document.querySelector("#search-input").value.toUpperCase();
   console.log("city is: " + searchCity);
 
   //SETS THE DATE
@@ -26,5 +26,7 @@ searchBtnEl.on("click", function (event) {
     console.log("Longitude: " + lat);
     console.log("Latitude: " + lon);
   })
+
+  // SECOND AJAX CALL USES LONGITUDE AND LATITIUDE 
 
 });
