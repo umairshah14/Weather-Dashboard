@@ -19,30 +19,36 @@
   <!-- max-width for ultra wide resolutions -->
   <div>
     <div class="row">
-      <div class="cityInfo col-3">
-        <h2 id="form-heading" class="mt-1 h3 form-label">
-          Search for a City:
-        </h2>
-        <form id="search-form" class="form">
-          <div class="form-inline form-group">
-            <div class="input-group">
-              <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter city name"
-                aria-labelledby="form-heading" aria-controls="today forecast" />
-              <div class="input-group-append">
-                <button type="submit" class="btn search-button" id="search-button" aria-label="submit search">
-                  Search
-                  <button type="submit" class="btn search-button" id="clear-button" aria-label="submit search">
-                    Clear
-                  </button>
-                  <hr class="hr weather-hr" />
+      <div class="cityInfo col-2">
+        <div>
+          <h2 id="form-heading" class="mt-1 h3 form-label">Search for a City:</h2>
+          <form id="search-form" class="form">
+            <div class="form-inline form-group">
+              <div class="input-group">
+                <input class="form-input weather-search" type="text" id="search-input" placeholder="Enter city name"
+                  aria-labelledby="form-heading" aria-controls="today forecast" />
+                </div>
               </div>
-            </div>
-          </div>
-        </form>
+              <div class="input-group-append">
+                <button type="button" class="btn btnWidth btn-light">Search</button>
+              </div>
+          </form>
+<!-- 
+          <div class="QuickSearch">
+            <h1>Quick Search</h1>
+            <button type="button" class="btn btnWidth btn-light quickSearchItem">London</button>
+            <button type="button" class="btn btnWidth btn-light quickSearchItem">London</button>
+            <button type="button" class="btn btnWidth btn-light quickSearchItem">London</button>
+            <button type="button" class="btn btnWidth btn-light quickSearchItem">London</button>
+
+          
+            
+          </div> -->
+        </div>
       </div>
 
-      <div class="col-9" style="width: 100vw">
-        <div class="jumbotron jumbotron-fluid">
+      <div class="col-10" style="width: 100vw">
+        <div class="jumbotron">
           <div class="container">
             <h1 class="display-4">CITY AND DATE</h1>
             <p class="lead">TEMP:</p>
@@ -52,7 +58,13 @@
         </div>
 
         <div class="row">
-          <div class="card" style="width: 18rem;">
+          <div class="col-12">
+            <h1>5 DAY FORECAST: </h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="card col-2" style="width: 18rem;">
             <h5 class="card-title">Card title</h5>
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
@@ -63,6 +75,7 @@
               <li class="list-group-item">Vestibulum at eros</li>
             </ul>
           </div>
+          
         </div>
 
       </div>
