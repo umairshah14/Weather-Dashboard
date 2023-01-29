@@ -50,13 +50,13 @@ searchBtnEl.on("click", function (event) {
   }).then(function (responseForecast) {
     console.log(responseForecast);
 
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
      
-        forecastDisplayer.append(newDiv)
-        newDiv.addClass("card col-2")
-        newDiv.append(newh5)
+    //     forecastDisplayer.append(newDiv)
+    //     newDiv.addClass("card col-2")
+    //     newDiv.append(newh5)
         
-    }
+    // }
 
 
   });
