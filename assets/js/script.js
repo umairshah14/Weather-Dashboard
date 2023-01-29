@@ -47,25 +47,36 @@ searchBtnEl.on("click", function (event) {
 
     //SETS THE DATE AND CITY NAME
     $(currentDayEl).text(searchCity + ", " + response[0].country + today.format(" (MM/DD/YYYY)"));
+
+    // READS API TO GET LON AND LAT COORDS
     lat = response[0].lon;
     lon = response[0].lat;
-    console.log("Longitude: " + lat);
-    console.log("Latitude: " + lon);
   });
 
+  // PASSES THE LAT AND LON COORDS INTO THE URL TO GRAB THE FORECAST INFO
+  forecastURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&units=metric&cnt=5&appid=11a6edf7f55109a8876a082e0f89437e"
+  
   // SECOND AJAX CALL USES LONGITUDE AND LATITUDE VARS DEFINED IN PREV AJAX CALL
-  forecastURL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&cnt=5&appid=11a6edf7f55109a8876a082e0f89437e"
   $.ajax({
     url: forecastURL,
     method: "GET",
   }).then(function (responseForecast) {
     console.log(responseForecast);
+
+    for (let i = 0; i < responseForecast.list.length; i++) {
+
+      var date = new Date(responseForecast.list[i].dt * 1000)
+      date = date.toLocaleDateString()
+      var temp = (responseForecast.list[i].temp.day - 32) * 0.5556.toFixed(0)
+      console.log(temp);
+
+
+      
+    }
         // forecastDisplayer.append(newDiv)
         // newDiv.addClass("card col-2")
         // newDiv.append(newh5)
   });
-
-
 
   //EVENT LISTENER CLOSES
 });
