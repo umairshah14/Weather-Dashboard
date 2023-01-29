@@ -1,5 +1,8 @@
 .cityInfo {
-    background-color: brown;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 
 .containerEdit{
@@ -9,17 +12,18 @@
 .btnWidth{
     width: 180px;
 }
-.cityInfo{
-    display: flex;
-    justify-content: center;
-}
 
 .black{
     background-color: black;
 }
 
+.jumbotron2{
+    background-color: transparent !important;
+    padding-top: 2rem !important;
+}
+
 .red{
-    background-color: red;
+    background-color: black !important;
 }
 
 .quickSearchItem{

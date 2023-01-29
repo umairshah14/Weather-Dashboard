@@ -44,12 +44,17 @@
       </div>
 
       <div class="col-10" style="width: 100vw">
-        <div class="jumbotron">
+        <div class="jumbotron jumbotron2">
           <div class="container">
             <h1 class="display-4" id="currentDay"></h1>
-            <p class="lead" id="jumboTemp"></p>
-            <p class="lead" id="jumboWind"></p>
-            <p class="lead" id="jumboHumidity"></p>
+            <div id="jumboHolder">
+              <h3 id="todaysWeather"></h3>
+              <img id="jumboWeatherIcon">
+              <p class="lead" id="jumboDescription"></p>
+              <p class="lead" id="jumboTemp"></p>
+              <p class="lead" id="jumboWind"></p>
+              <p class="lead" id="jumboHumidity"></p>
+            </div>
           </div>
         </div>
 
@@ -60,7 +65,7 @@
         </div>
 
         <div class="row attachForecast">
-          <div class="card col-2" style="width: 18rem;">
+          <div class="card col-2">
             <h5 class="card-title">Card title</h5>
             <img src="..." class="card-img-top" alt="...">
             <ul class="list-group list-group-flush">
