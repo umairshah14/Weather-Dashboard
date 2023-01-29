@@ -52,6 +52,7 @@ searchBtnEl.on("click", function (event) {
     url: LonLatURL,
     method: "GET",
   }).then(function (response) {
+    console.log(response);
     if (response.length === 0) {
       $(currentDayEl).text("No match found for: " + searchCity);
       jumboHolderEl.empty();
@@ -59,7 +60,7 @@ searchBtnEl.on("click", function (event) {
     }
     console.log(response);
     console.log("search city: " + searchCity);
-    console.log("response name: " + response.name);
+    console.log("response name: " + response[0].name.toUpperCase());
 
     //SETS THE DATE AND CITY NAME
     $(currentDayEl).text(
@@ -108,11 +109,12 @@ searchBtnEl.on("click", function (event) {
       for (let i = 1; i < responseForecast.list.length; i++) {
         var date = new Date(responseForecast.list[i].dt * 1000);
         date = date.toLocaleDateString();
+        var tempIcon = "http://openweathermap.org/img/wn/" + responseForecast.list[i].weather[i].icon + "@2x.png";
         var temperature = (responseForecast.list[i].temp.day - 32) * 0.5556;
         temperature = temperature.toFixed(0) + "°C";
-        var humidity = responseForecast.list[i].humidity + "%";
-        var tempIcon = "http://openweathermap.org/img/wn/" + responseForecast.list[i].weather[i].icon + "@2x.png";
         var windSpeed =  responseForecast.list[i].speed + " k/ph"
+        var humidity = responseForecast.list[i].humidity + "%";
+
           attachForecastEl.append(cardDiv)
           cardDiv.addClass("card col-2")
           cardDiv.append(cardDate)
@@ -127,6 +129,7 @@ searchBtnEl.on("click", function (event) {
           cardLi1.text("Temp: " + temperature)
           cardLi2.text("Wind: " + windSpeed)
           cardLi3.text("Humidity: " + humidity)
+          $(".col-10").append(attachForecastEl)
       }
     });
   });
