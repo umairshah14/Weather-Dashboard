@@ -1,10 +1,15 @@
 var searchBtnEl = $("#search-button");
 var currentDayEl = $("#currentDay");
 var additionalCitiesDiv = $(".additionalCities");
+var forecastDisplayer = $(".attachForecast");
 var searchCity = "";
 var forecastURL = ""
 var lat = 0
 var lon = 0
+
+var newDiv = $("<div>")
+var newh5 = $("<h5>")
+var newImg = $("<img>")
 
 var today = moment();
 $(currentDayEl).text("LONDON, GB" + today.format(" (MM/DD/YYYY)"));
@@ -30,7 +35,6 @@ searchBtnEl.on("click", function (event) {
 
     //SETS THE DATE AND CITY NAME
     $(currentDayEl).text(searchCity + ", " + response[0].country + today.format(" (MM/DD/YYYY)"));
-    console.log(response);
     lat = response[0].lon;
     lon = response[0].lat;
     console.log("Longitude: " + lat);
@@ -38,13 +42,23 @@ searchBtnEl.on("click", function (event) {
   });
 
   // SECOND AJAX CALL USES LONGITUDE AND LATITUDE DEFINED IN PREV AJAX CALL
-  forecastURL ="http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon +"&cnt=5&units=metric&appid=11a6edf7f55109a8876a082e0f89437e";
-      
+  forecastURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&cnt=15&appid=11a6edf7f55109a8876a082e0f89437e"
+                       
   $.ajax({
     url: forecastURL,
     method: "GET",
   }).then(function (responseForecast) {
     console.log(responseForecast);
+
+    for (let i = 0; i < 5; i++) {
+     
+        forecastDisplayer.append(newDiv)
+        newDiv.addClass("card col-2")
+        newDiv.append(newh5)
+        
+    }
+
+
   });
 
 
