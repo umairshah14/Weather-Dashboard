@@ -7,15 +7,15 @@ This task helped me really grasp how to work with 3rd party api's and how to rea
 
 Below is a screenshot of what the project should look like when opened in the browser 
 
-![screenshot of the project](./Screenshot%202023-01-23%20at%2002.52.29.png)
+![screenshot of the project](./Screenshot%202023-01-31%20at%2022.40.35.png)
 
 ## Usage
 
-To use and try out this project, first clone the repository from GitHub with the following link: https://github.com/umairshah14/Daily-Planner-App.git and then open a local server to view
+To use and try out this project, first clone the repository from GitHub with the following link: https://github.com/umairshah14/Weather-Dashboard.git and then open a local server to view
 
 OR
 
-visit the live deployed application at: https://umairshah14.github.io/Daily-Planner-App/
+visit the live deployed application at: 
 
 ## Credits
 
@@ -23,7 +23,6 @@ Umair Shah
 
 ## Resources
 
-- https://www.w3schools.com/jsref/prop_win_localstorage.asp
-- https://momentjs.com/
-- https://api.jqueryui.com/
-- https://www.w3schools.com/jquery/default.asp
+- https://openweathermap.org/
+- https://technologyadvice.com/blog/information-technology/how-to-use-an-api/
+- https://medium.com/@reemshakes/is-ajax-getting-replaced-by-fetch-api-55207234793f#:~:text=The%20Fetch%20API%2C%20is%20a,the%20official%20Fetch%20API%20Standard.
