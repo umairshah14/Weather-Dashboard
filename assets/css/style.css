@@ -48,6 +48,9 @@ html,body
 .spaceAround{
     margin: 26px;
 }
+.spaceAround2{
+    margin-bottom: 0.5rem;
+}
 .black{
     background-color: black !important; 
     color: white;

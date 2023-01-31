@@ -28,6 +28,7 @@ function addCity(city){
   var newCity = $(("<button>"))
   newCity.text(city)
   newCity.attr("id", "#search-button")
+  newCity.addClass("btn btnWidth btn-dark spaceAround2")
   additionalCitiesDiv.append(newCity)
 }
 
@@ -37,9 +38,6 @@ searchBtnEl.on("click", function (event) {
   // GRABS THE CITY USER TYPES IN
   searchCity = document.querySelector("#search-input").value.toUpperCase();
   console.log("city is: " + searchCity);
-
-  //ADD THE BUTTON FOR THE CITY JUST SEARCHED
-  addCity(searchCity)
 
 
   // PASSES THE CITY INTO THE URL TO GRAB THE LONGITUDE AND LATITUDE
@@ -60,6 +58,9 @@ searchBtnEl.on("click", function (event) {
       $("#5dayCast").text("");
       return;
     }
+
+    //ADD THE BUTTON FOR THE CITY JUST SEARCHED
+    addCity(searchCity)
 
     //SETS THE DATE AND CITY NAME
     $(currentDayEl).text(
@@ -112,6 +113,7 @@ searchBtnEl.on("click", function (event) {
         let cardLi1 = $("<li>");
         let cardLi2 = $("<li>");
         let cardLi3 = $("<li>");
+        let cardLi4 = $("<li>");
         let attachForecastEl = $("<div>");
 
         // attach the card to the page
@@ -124,12 +126,15 @@ searchBtnEl.on("click", function (event) {
         cardImg.addClass("card-img-top");
         cardDiv.append(cardUl);
         cardUl.addClass("list-group list-group-flush");
+        cardUl.append(cardLi4);
         cardUl.append(cardLi1);
         cardUl.append(cardLi2);
         cardUl.append(cardLi3);
+        cardLi4.text(responseForecast.list[i].weather[0].description);
         cardLi1.text("Temp: " + temperature);
         cardLi2.text("Wind: " + windSpeed);
         cardLi3.text("Humidity: " + humidity);
+        cardLi4.addClass("list-group-item");
         cardLi1.addClass("list-group-item");
         cardLi2.addClass("list-group-item");
         cardLi3.addClass("list-group-item");
