@@ -9,17 +9,32 @@
     margin-left: 0px !important;
     margin-right: 0px !important; 
 }
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .btnWidth{
     width: 180px;
+
+}
+.btnWidth2{
+    width: 180px;
+    color: white;
+    
 }
 
+.spaceAround{
+    margin: 26px;
+}
 .black{
     background-color: black;
 }
 
-.jumbotron2{
+#jumbotron2{
     background-color: transparent !important;
-    padding-top: 2rem !important;
+    padding-top: none !important;
 }
 
 .red{
@@ -28,4 +43,8 @@
 
 .quickSearchItem{
     margin-bottom: 10px;
+}
+
+body{
+    background-color: white;
 }
