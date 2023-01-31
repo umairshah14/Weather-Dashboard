@@ -12,15 +12,15 @@
 </head>
 
 <body>
-  <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+  <header class="container-fluid text-center text-white p-2 weather-header black">
     <h1>Weather Dashboard</h1>
   </header>
 
-  <!-- max-width for ultra wide resolutions -->
+  <!-- SEARCH FOR A CITY AND RECENTLY DISPLAYED CITIES -->
   <div>
     <div class="row">
       <div class="cityInfo col-2">
-        <div>
+        <div class="block">
           <h2 id="form-heading" class="mt-1 h3 form-label">Search for a City:</h2>
           <form id="search-form" class="form">
             <div class="form-inline form-group">
@@ -43,22 +43,28 @@
         </div>
       </div>
 
+      <!-- DISPLAY TODAYS WEATHER -->
       <div class="col-10" style="width: 100vw">
-        <div class="row">
-          <div class="col-12 jumbotron p-0 ml-3" id="jumbotron2">
-            <div class="container containerEdit pt-4">
-              <h1 class="display-4" id="currentDay"></h1>
-              <div id="jumboHolder">
-                <h3 id="todaysWeather"></h3>
-                <img id="jumboWeatherIcon">
-                <p class="lead" id="jumboDescription"></p>
-                <p class="lead" id="jumboTemp"></p>
-                <p class="lead" id="jumboWind"></p>
-                <p class="lead" id="jumboHumidity"></p>
+          <div class="row no-gutters">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h1 class="display-4" id="currentDay"></h1>
+                <div id="jumboHolder">
+                  <h3 id="todaysWeather"></h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item " id="jumboDescription"></li>
+                    <li class="list-group-item" id="jumboTemp"></li>
+                    <li class="list-group-item" id="jumboWind"></li>
+                    <li class="list-group-item" id="jumboHumidity"></li>
+                  </ul>
+                </div>
               </div>
             </div>
+
+            <div class="col-md-4">
+              <img id="jumboWeatherIcon">
+            </div>
           </div>
-        </div>
 
         <div class="row">
           <div class="col-12">
