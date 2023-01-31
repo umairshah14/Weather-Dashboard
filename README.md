@@ -15,7 +15,7 @@ To use and try out this project, first clone the repository from GitHub with the
 
 OR
 
-visit the live deployed application at: 
+visit the live deployed application at: https://umairshah14.github.io/Weather-Dashboard/
 
 ## Credits
 
