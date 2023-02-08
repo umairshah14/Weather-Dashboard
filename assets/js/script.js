@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES
-var searchCity = "";
+var city = "";
 var forecastURL = "";
 var searchHistory = []
 var today = moment();
@@ -22,26 +22,48 @@ $(currentDayEl).text("Please search for a city to begin");
 jumboHolderEl.hide()
 jumboWeatherEl.hide()
 
+// CREATES A BUTTON FOR THE CITY YOU JUST SEARCHED FOR
+function CreateSearchHistoryButtons(){
+  additionalCitiesDiv.html("")
 
-//MAKE A NEW BUTTON FOR THE CITY THAT WAS JUST SEARCHED
-function addCity(city){
-  var newCity = $(("<button>"))
-  newCity.text(city)
-  newCity.attr("id", "#search-button")
-  newCity.addClass("btn btnWidth btn-dark spaceAround2")
-  additionalCitiesDiv.append(newCity)
+  searchHistory.forEach((cityName) =>{
+    var storedCity = $(("<button>"))
+    storedCity.text(cityName)
+    storedCity.attr("data-search", cityName)
+    storedCity.attr('aria-controls', 'today forecast');
+    storedCity.addClass("btn btnWidth btn-dark spaceAround2 btn-history")
+    additionalCitiesDiv.append(storedCity)
+  })
 }
 
+// GETS THE NAME OF THE CITY YOU JUST SEARCHED FOR FROM LOCAL STORAGE
+function getSearchHistory() {
+  var citySearched = localStorage.getItem("citiesSearched")
+  
+  // CHECKS IF THERE IS ANY EXISTING SEARCH HISTORY
+  if(citySearched){
+    searchHistory = JSON.parse(localStorage.getItem("citiesSearched"))
+  }
+  CreateSearchHistoryButtons()
+}
 
-searchBtnEl.on("click", function (event) {
-  event.preventDefault();
-  // GRABS THE CITY USER TYPES IN
-  searchCity = document.querySelector("#search-input").value.toUpperCase();
-  console.log("city is: " + searchCity);
+// ADDS THE CITY YOU SEARCHED FOR TO LOCAL STORAGE
+function addCity(city){
 
+  // CHECKS TO SEE IF CITY IS ALREADY IN THE ARRAY BEFORE SETTING TO STORAGE
+  if (!searchHistory.includes(city)){
+    searchHistory.push(city)
+    localStorage.setItem("citiesSearched", JSON.stringify(searchHistory))
+
+  }
+  CreateSearchHistoryButtons()
+}
+
+// TAKES IN THE CITY SEARCHED AND GRABS THE WEATHER INFO FOR THAT CITY
+function grabWeatherInfo(city) {
 
   // PASSES THE CITY INTO THE URL TO GRAB THE LONGITUDE AND LATITUDE
-  var LonLatURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + searchCity + "&limit=1&appid=11a6edf7f55109a8876a082e0f89437e";
+  var LonLatURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=11a6edf7f55109a8876a082e0f89437e";
 
   // FIRST AJAX API CALL GIVES THE LONGITUDE AND LATITUDE CO ORDINATES
   $.ajax({
@@ -51,7 +73,7 @@ searchBtnEl.on("click", function (event) {
 
     // CHECKS IF A VALID CITY HAS BEEN ENTERED
     if (response.length === 0) {
-      $(currentDayEl).text("No match found for: " + searchCity);
+      $(currentDayEl).text("No match found for: " + city);
       jumboHolderEl.hide()
       jumboWeatherEl.hide()
       $("#infoHere").empty();
@@ -60,11 +82,11 @@ searchBtnEl.on("click", function (event) {
     }
 
     //ADD THE BUTTON FOR THE CITY JUST SEARCHED
-    addCity(searchCity)
+    addCity(city)
 
     //SETS THE DATE AND CITY NAME
     $(currentDayEl).text(
-      searchCity + ", " + response[0].country + today.format(" (DD/MM/YYYY)")
+      city + ", " + response[0].country + today.format(" (DD/MM/YYYY)")
     );
 
     // READS API TO GET LON AND LAT COORDS
@@ -141,7 +163,26 @@ searchBtnEl.on("click", function (event) {
         $("#infoHere").append(attachForecastEl);
       }
     });
+    //EVENT LISTENER CLOSES
   });
+}
 
-  //EVENT LISTENER CLOSES
-});
+// THIS GRABS THE CITY YOU SEARCHED FOR TO THEN PASS IT IN TO THE ON CLICK LISTENER ATTACHED TO "additionalCitiesDiv"
+function historySearchShortcut (event){
+  event.preventDefault()
+  console.log("INSIDE HANDLE SEARCH");
+  console.log(event.target);
+  if (!$(event.target).hasClass("btn-history")){
+    return
+  }
+  var search = $(event.target).data("search")
+  grabWeatherInfo(search)
+}
+
+getSearchHistory()
+
+searchBtnEl.on("click", function(){
+  city = document.querySelector("#search-input").value.toUpperCase();
+  grabWeatherInfo(city)
+})
+additionalCitiesDiv.on("click", historySearchShortcut)
