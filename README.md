@@ -1,4 +1,4 @@
-# Daily Planner
+# Weather Forecast
 
 ## Description
 I created this repository to hold my submission for the week8 challenge which was to create a weather forecast website, when you type in a city, you receive information for the current day forecast as well as the weather forecast for the next five days. If the city is not recognised, then nothing shows up. Every time a city is searched a button is generated on the side also.
